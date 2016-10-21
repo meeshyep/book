@@ -4,8 +4,11 @@ require "./models/link"
 require "./models/tag"
 
 RSpec.feature "view tags", :type => :feature do
+  before(:each) do
+    Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy', tags: [Tag.first_or_create(tag_name: 'news')])
+  end
   scenario "Filter links by tag" do
-    visit '/links/news'
-    expect(page).to have_text "news"
+    visit '/tag'
+    expect(page).to have_content('news')
   end
 end

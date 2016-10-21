@@ -9,9 +9,17 @@ Your links!
         <ul id='links'>
           <li><%=link.title%></li>
           <li><%=link.url %></li>
-          <% link.tags.each do |tag| %>
-            <li> <%= tag.tag_name %> </li>
+          <li> <% link.tags.each do |tag| %>
+             <%= tag.tag_name %>
           <% end %>
+        </li>
         </ul>
     <%end%>
 </div>
+
+<form action="/tag" method="get">
+  Filter links by tag:
+  <br>
+  <input type="text" name="filter">
+  <input type="submit" value="Search">
+</form>
