@@ -8,7 +8,7 @@ RSpec.feature "view tags", :type => :feature do
     Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy', tags: [Tag.first_or_create(tag_name: 'news')])
   end
   scenario "Filter links by tag" do
-    visit '/'
+    visit '/links'
     fill_in :filter, with: 'news'
     click_button "Search"
     expect(page).to have_content('news')
